@@ -1,11 +1,8 @@
-/* Runs first: marks the page as JS-enabled and guards against a stuck preloader. */
+/* Runs first: marks the page as JS-enabled. If main.js never runs, content that waits for a reveal is shown anyway. */
 (function () {
   var r = document.documentElement;
-  r.classList.add('js', 'ld');
+  r.classList.add('js');
   setTimeout(function () {
-    var p = document.getElementById('pre');
-    if (p && p.parentNode) p.parentNode.removeChild(p);
-    r.classList.remove('ld');
-    r.classList.add('go');
-  }, 5000);
+    if (!r.classList.contains('ready')) r.classList.remove('js');
+  }, 3000);
 })();

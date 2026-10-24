@@ -12,7 +12,7 @@ public/
   index.html         sayfa
   404.html
   css/style.css      tüm stiller
-  js/boot.js         ilk çalışan küçük betik (preloader güvenliği)
+  js/boot.js         ilk çalışan küçük betik (main.js yüklenmezse içerik yine görünür)
   js/main.js         animasyonlar ve etkileşimler
   assets/            portre, CV (PDF), favicon
   images/            ← proje resimlerini BURAYA koy
