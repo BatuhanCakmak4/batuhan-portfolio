@@ -1,0 +1,13 @@
+{
+  "name": "batuhan-cakmak-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio of Batuhan Çakmak, served by a hardened zero-dependency Node server.",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:env": "node --env-file=.env server.js"
+  },
+  "engines": { "node": ">=18" },
+  "license": "UNLICENSED"
+}
