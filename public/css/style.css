@@ -277,7 +277,9 @@ main, .footer, .nav-links, .menu nav, .menu-foot { transition: opacity 260ms var
   background: linear-gradient(180deg, #fff 30%, rgba(255, 255, 255, .62));
   -webkit-background-clip: text; background-clip: text;
   color: transparent;
-  padding-bottom: .06em;
+  /* Room below the tight line box so the gradient, clipped to the box, still covers the Ç cedilla. */
+  padding-bottom: .2em;
+  margin-bottom: -.14em;
 }
 .hero-tag {
   margin: 28px 0 0;
