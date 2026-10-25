@@ -3,6 +3,8 @@
   var d = document, root = d.documentElement;
   var rm = matchMedia("(prefers-reduced-motion: reduce)");
   var fine = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  /* Translation helpers from i18n.js; the page still works in English without it. */
+  var I = window.I18N || { t: function (s) { return s; }, on: function () {} }, T = I.t;
   root.classList.add("ready");
 
   /* Navigation: frosted bar once the page scrolls, active section, mobile menu. */
@@ -20,10 +22,12 @@
   function setMenu(open) {
     nav.classList.toggle("open", open);
     menuBtn.setAttribute("aria-expanded", String(open));
-    menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    menuBtn.setAttribute("aria-label", T(open ? "Close menu" : "Open menu"));
     if (open) menu.removeAttribute("inert"); else menu.setAttribute("inert", "");
   }
   if (menu && menuBtn) {
+    setMenu(false);
+    I.on(function () { setMenu(nav.classList.contains("open")); });
     menuBtn.addEventListener("click", function () { setMenu(!nav.classList.contains("open")); });
     menu.addEventListener("click", function (e) { if (e.target.closest("a")) setMenu(false); });
     d.addEventListener("keydown", function (e) {
@@ -85,14 +89,19 @@
     var tag = rw.closest(".hero-tag");
     var sr = d.createElement("span");
     sr.className = "sr-only";
-    sr.textContent = W.join(", ");
+    function words() {
+      rw.textContent = T(W[wi]);
+      sr.textContent = W.map(T).join(", ");
+    }
     tag.appendChild(sr);
+    words();
+    I.on(words);
     setInterval(function () {
       if (rm.matches || d.hidden) return;
       rw.className = "o";
       setTimeout(function () {
         wi = (wi + 1) % W.length;
-        rw.textContent = W[wi];
+        rw.textContent = T(W[wi]);
         rw.className = "i";
         void rw.offsetWidth;
         rw.className = "";
@@ -159,14 +168,15 @@
   ];
   var sb = d.getElementById("sb"), sd = d.getElementById("sd"), topo = d.getElementById("topo");
   var groups = topo ? [].slice.call(topo.querySelectorAll("g[data-k]")) : [];
-  var tabs = [];
+  var tabs = [], cur = 0;
   function show(n, focus) {
+    cur = n;
     tabs.forEach(function (b, k) {
       var on = k === n;
       b.setAttribute("aria-selected", String(on));
       b.tabIndex = on ? 0 : -1;
     });
-    sd.textContent = S[n][1];
+    sd.textContent = T(S[n][1]);
     if (topo) {
       topo.classList.add("hl");
       groups.forEach(function (g) {
@@ -186,7 +196,7 @@
       b.type = "button";
       b.setAttribute("role", "tab");
       b.setAttribute("aria-controls", "sd");
-      b.textContent = s[0];
+      b.textContent = T(s[0]);
       b.addEventListener("click", function () { show(k); });
       sb.appendChild(b);
       tabs.push(b);
@@ -200,6 +210,10 @@
       show((next + tabs.length) % tabs.length, true);
     });
     show(0);
+    I.on(function () {
+      tabs.forEach(function (b, k) { b.textContent = T(S[k][0]); });
+      sd.textContent = T(S[cur][1]);
+    });
   }
 
   /* Copy email address, with a short confirmation. */
@@ -209,7 +223,7 @@
     copy.addEventListener("click", function () {
       navigator.clipboard.writeText(copy.getAttribute("data-copy")).then(function () {
         copy.classList.add("done");
-        status.textContent = "Email address copied";
+        status.textContent = T("Email address copied");
         clearTimeout(copyTimer);
         copyTimer = setTimeout(function () { copy.classList.remove("done"); status.textContent = ""; }, 1800);
       });

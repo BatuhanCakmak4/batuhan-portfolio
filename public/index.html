@@ -47,9 +47,15 @@
       <a href="#about">About</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#work">Projects</a><a href="#github">GitHub</a>
     </nav>
     <div class="nav-cta">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" lang="en" title="English" aria-pressed="true">EN</button>
+        <button type="button" data-lang="tr" lang="tr" title="Türkçe" aria-pressed="false">TR</button>
+        <button type="button" data-lang="de" lang="de" title="Deutsch" aria-pressed="false">DE</button>
+        <span class="lang-thumb" aria-hidden="true"></span>
+      </div>
       <a class="btn btn-ghost btn-sm" href="assets/BATUHAN_CAKMAK_CV.pdf" download="Batuhan_Cakmak_CV.pdf">CV</a>
       <a class="btn btn-primary btn-sm" href="#contact">Contact</a>
-      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+      <button class="menu-btn" id="menu-btn" data-i18n-skip type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
     </div>
   </div>
   <div class="menu" id="menu" inert>
@@ -75,7 +81,7 @@
     <div class="hero-copy">
       <p class="eyebrow" data-load><span class="pulse" aria-hidden="true"></span>Computer Engineering Student · Kadir Has University</p>
       <h1 class="hero-title" data-load>Batuhan<br>Çakmak</h1>
-      <p class="hero-tag" data-load>Right now I’m learning <span class="rot"><span id="rw">computer networks</span></span></p>
+      <p class="hero-tag" data-load>Right now I’m learning <span class="rot" data-i18n-skip><span id="rw">computer networks</span></span></p>
       <p class="hero-sub" data-load>Fourth-year student in Istanbul. I learn a topic, then build something with it: network labs on real switches, small IoT devices and web software.</p>
       <div class="hero-actions" data-load>
         <a class="btn btn-primary" href="#work">View projects<svg class="ic" aria-hidden="true"><use href="#i-right"/></svg></a>
@@ -306,8 +312,8 @@
               <g class="pkts"><circle r="5"><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#p1"/></animateMotion></circle><circle r="5"><animateMotion dur="5s" begin="-2.5s" repeatCount="indefinite"><mpath href="#p2"/></animateMotion></circle></g>
             </svg>
           </div>
-          <div class="seg" id="sb" role="tablist" aria-label="Packet journey"></div>
-          <p class="seg-desc" id="sd" aria-live="polite"></p>
+          <div class="seg" id="sb" data-i18n-skip role="tablist" aria-label="Packet journey"></div>
+          <p class="seg-desc" id="sd" data-i18n-skip aria-live="polite"></p>
           <div class="gallery g2">
             <figure class="shot" data-f="19-switch-vlan-overview.png"><figcaption class="shot-bar">Switch VLAN overview</figcaption><button class="shot-view" type="button" aria-label="View larger: Switch VLAN overview"><img class="fit" src="images/19-switch-vlan-overview.png" alt="Switch VLAN overview" loading="lazy" width="1130" height="490"></button></figure>
             <figure class="shot" data-f="20-switch-layer3-routing.png"><figcaption class="shot-bar">Layer 3 routing on the switch</figcaption><button class="shot-view" type="button" aria-label="View larger: Layer 3 routing on the switch"><img class="fit" src="images/20-switch-layer3-routing.png" alt="Layer 3 routing on the switch" loading="lazy" width="1132" height="592"></button></figure>
@@ -316,7 +322,7 @@
       </div>
 
       <div class="chapter">
-        <div class="ch-text" data-reveal><p class="ch-step">Services</p><h4>DHCP, DNS and a web server on Raspberry Pi.</h4><p>ISC DHCP serves the wired client scope. BIND9 answers for the internal <code>lab.home.arpa</code> zone, and Nginx hosts a custom dashboard at <code>web.lab.home.arpa</code>.</p></div>
+        <div class="ch-text" data-reveal><p class="ch-step">Services</p><h4>DHCP, DNS and a web server on Raspberry Pi.</h4><p data-i18n-html="lab-services">ISC DHCP serves the wired client scope. BIND9 answers for the internal <code>lab.home.arpa</code> zone, and Nginx hosts a custom dashboard at <code>web.lab.home.arpa</code>.</p></div>
         <div class="gallery g2" data-reveal>
           <figure class="shot" data-f="01-dashboard-overview.png"><figcaption class="shot-bar">Internal dashboard</figcaption><button class="shot-view" type="button" aria-label="View larger: Internal dashboard"><img class="top" src="images/01-dashboard-overview.png" alt="Internal dashboard" loading="lazy" width="1800" height="1125"></button></figure>
           <figure class="shot" data-f="09-dhcp-lease-process.png"><figcaption class="shot-bar">DHCP lease process</figcaption><button class="shot-view" type="button" aria-label="View larger: DHCP lease process"><img class="fit" src="images/09-dhcp-lease-process.png" alt="DHCP lease process" loading="lazy" width="1250" height="430"></button></figure>
@@ -357,7 +363,7 @@
       </div>
       <div class="split" data-reveal>
         <div class="prose">
-          <p>Users sign in with session-based authentication and bcrypt password checks, then reach a Control Center, a calendar and the Smart Room module. The server reads JSON from the Arduino over USB serial, exposes it at <code>/api/sensor</code>, retries the connection if it drops, and stores data in MySQL.</p>
+          <p data-i18n-html="han37-flow">Users sign in with session-based authentication and bcrypt password checks, then reach a Control Center, a calendar and the Smart Room module. The server reads JSON from the Arduino over USB serial, exposes it at <code>/api/sensor</code>, retries the connection if it drops, and stores data in MySQL.</p>
           <p class="small">Node.js, Express, MySQL, express-session, bcryptjs, SerialPort, Arduino, dotenv. Still in development, not a finished product.</p>
         </div>
         <div class="gallery g2">
@@ -377,7 +383,7 @@
       </header>
       <figure class="shot paper" data-f="assets/topology.png" data-reveal><figcaption class="shot-bar">Network topology</figcaption><button class="shot-view" type="button" aria-label="View larger: Network topology"><img src="assets/topology.png" alt="Packet Tracer network topology with IT, HR, Finance and Sales departments" loading="lazy" width="811" height="520"></button></figure>
       <div class="scope" data-reveal>
-        <div class="card"><h4>Implemented</h4><ul class="lst"><li>IPv4 addressing and subnetting for each department</li><li>VLAN segmentation, 802.1Q trunking, PVST</li><li>Router-on-a-stick inter-VLAN routing</li><li><b>Static routing</b> between the four routers</li><li>Centralized DHCP with relay, and DNS</li><li>Management VLANs, SSH, wireless networking</li></ul></div>
+        <div class="card"><h4>Implemented</h4><ul class="lst"><li>IPv4 addressing and subnetting for each department</li><li>VLAN segmentation, 802.1Q trunking, PVST</li><li>Router-on-a-stick inter-VLAN routing</li><li data-i18n-html="pt-static"><b>Static routing</b> between the four routers</li><li>Centralized DHCP with relay, and DNS</li><li>Management VLANs, SSH, wireless networking</li></ul></div>
         <div class="card dashed"><h4 class="mu">Planned, not implemented</h4><ul class="lst rm"><li>OSPF</li><li>Extended ACLs, broader SSH management</li><li>Port security, DHCP snooping</li><li>Firewall integration, NAT, simulated Internet</li><li>Syslog, NTP, monitoring</li></ul></div>
       </div>
     </article>
@@ -478,7 +484,7 @@
             <span class="copy-label"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>Copy address</span>
             <span class="copy-done" aria-hidden="true"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg>Copied</span>
           </button>
-          <span class="sr-only" id="copy-status" aria-live="polite"></span>
+          <span class="sr-only" id="copy-status" data-i18n-skip aria-live="polite"></span>
         </div>
       </div>
       <div class="links" data-reveal>
@@ -500,10 +506,11 @@
 </footer>
 
 <dialog class="lightbox" id="lb" aria-label="Image viewer">
-  <figure class="lb-fig"><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <figure class="lb-fig"><img id="lb-img" alt=""><figcaption id="lb-cap" data-i18n-skip></figcaption></figure>
   <button class="lb-close" id="lb-close" type="button" aria-label="Close image"><svg class="ic" aria-hidden="true"><use href="#i-close"/></svg></button>
 </dialog>
 
+<script src="js/i18n.js" defer></script>
 <script src="js/main.js" defer></script>
 </body>
 </html>
