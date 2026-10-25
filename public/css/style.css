@@ -825,6 +825,66 @@ html.lb-open { overflow: hidden; }
   .brand span { display: none; }
 }
 
+/* ---------- Loader ---------- */
+.loader { display: none; }
+.js .loader {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 28px;
+  background: var(--bg);
+  transition: clip-path 620ms var(--ease-in-out), visibility 0s 620ms;
+  clip-path: inset(0 0 0 0);
+}
+.js.loading body { overflow: hidden; }
+.js.loaded .loader { clip-path: inset(0 0 100% 0); visibility: hidden; }
+.loader-mark { width: clamp(72px, 14vw, 104px); height: auto; overflow: visible; fill: var(--text); }
+.loader-mark path { transform-box: view-box; transform-origin: 627px 590px; opacity: 0; }
+.lm-h { --from: translate(-260px, -260px) rotate(-45deg); animation: lm-in 620ms var(--ease-out) 80ms forwards; }
+.lm-n { --from: translate(260px, -260px) rotate(45deg); animation: lm-in 620ms var(--ease-out) 200ms forwards; }
+.lm-a { --from: translate(0, 320px) rotate(90deg); animation: lm-in 620ms var(--ease-out) 320ms forwards; }
+.loader-mark { animation: lm-pop 420ms var(--ease-out) 880ms; }
+/* Pieces scatter as the curtain lifts; a fresh animation is needed because the "forwards" fill would override a transition. */
+.js.loaded .loader-mark path { animation: lm-out 480ms var(--ease-in-out) forwards; }
+.js.loaded .lm-h { --to: translate(-110px, -110px); }
+.js.loaded .lm-n { --to: translate(110px, -110px); }
+.js.loaded .lm-a { --to: translate(0, 150px); }
+.loader-bar {
+  width: 96px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--line-2);
+  overflow: hidden;
+  position: relative;
+}
+.loader-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: lm-bar 1000ms var(--ease-in-out) forwards;
+}
+.js.loaded .loader-bar { opacity: 0; transition: opacity 200ms ease; }
+@keyframes lm-in {
+  from { transform: var(--from) scale(.6); opacity: 0; }
+  60% { opacity: 1; }
+  to { transform: none; opacity: 1; }
+}
+@keyframes lm-pop {
+  40% { transform: scale(1.12) rotate(-4deg); }
+  70% { transform: scale(.97) rotate(1deg); }
+}
+@keyframes lm-out {
+  from { transform: none; opacity: 1; }
+  to { transform: var(--to); opacity: 0; }
+}
+@keyframes lm-bar { to { transform: scaleX(1); } }
+
 /* ---------- Preferences ---------- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -836,6 +896,8 @@ html.lb-open { overflow: hidden; }
   .shot img, .btn, .repo, .link-row { transition-property: opacity, color, background-color, border-color !important; }
   .pulse::after, .chain li { animation: none !important; }
   .pkts, .net-n .pkt { display: none; }
+  .js .loader { transition: opacity 300ms ease, visibility 0s 300ms; }
+  .js.loaded .loader { clip-path: none; opacity: 0; }
 }
 @media (prefers-reduced-transparency: reduce) {
   .nav::before, .menu, .chip { background: var(--solid); -webkit-backdrop-filter: none; backdrop-filter: none; }

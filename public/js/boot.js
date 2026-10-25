@@ -14,6 +14,22 @@
     }
   }
   r.lang = lang;
+
+  // Intro loader: stays at least MIN ms so the logo animation can finish, never longer than MAX.
+  var MIN = 1300, MAX = 2600, t0 = Date.now(), done = false;
+  r.classList.add('loading');
+  function hide() {
+    if (done) return;
+    done = true;
+    r.classList.add('loaded');
+    setTimeout(function () {
+      r.classList.remove('loading');
+      var el = document.getElementById('loader');
+      if (el) el.parentNode.removeChild(el);
+    }, 700);
+  }
+  window.addEventListener('load', function () { setTimeout(hide, Math.max(0, MIN - (Date.now() - t0))); });
+  setTimeout(hide, MAX);
   if (lang !== 'en') r.classList.add('i18n-wait');
   setTimeout(function () {
     r.classList.remove('i18n-wait');
