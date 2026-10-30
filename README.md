@@ -4,7 +4,7 @@
 
 Personal portfolio of a Computer Engineering student at Kadir Has University, focused on computer networks, cybersecurity, IoT and software.
 
-Hand-written HTML, CSS and JavaScript with no framework and no build step, served by a hardened Node server that has **zero npm dependencies**.
+Plain HTML, CSS and JavaScript with no framework and no build step, served by a hardened Node server that has **zero npm dependencies**.
 
 ![Node](https://img.shields.io/badge/node-%E2%89%A518-339933?logo=node.js&logoColor=white)
 ![Dependencies](https://img.shields.io/badge/dependencies-0-success)
@@ -27,6 +27,15 @@ The site is a single page that covers who I am, what I work with, my internships
 - **Accessible:** semantic sections, a skip link, visible focus states, labelled navigation and the active section highlighted in the nav.
 - **Works without JavaScript:** if a script fails to load, the content still shows.
 - **Small attack surface:** no forms, no database and no user input on the backend.
+
+### How it was built
+
+I built this site together with [Claude Code](https://claude.com/claude-code), Anthropic's AI coding assistant. It was a back-and-forth collaboration rather than a solo project:
+
+- **My side:** the content (bio, internships, education, projects, CV and photos), the overall design direction and look, the feature and security requirements, and the final call on every change. I reviewed and tested the result in the browser as we went.
+- **Claude's side:** writing and refactoring much of the HTML, CSS, JavaScript and the Node server, the translations, the security headers and the Docker setup, plus fixing the bugs and layout issues I pointed out.
+
+Commits made during these sessions carry a `Co-Authored-By: Claude` line, so the history shows where we worked together.
 
 ## Screenshots
 
