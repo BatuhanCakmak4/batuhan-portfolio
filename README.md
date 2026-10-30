@@ -32,8 +32,8 @@ The site is a single page that covers who I am, what I work with, my internships
 
 I built this site together with [Claude Code](https://claude.com/claude-code), Anthropic's AI coding assistant. It was a back-and-forth collaboration rather than a solo project:
 
-- **My side:** the content (bio, internships, education, projects, CV and photos), the overall design direction and look, the feature and security requirements, and the final call on every change. I reviewed and tested the result in the browser as we went.
-- **Claude's side:** writing and refactoring much of the HTML, CSS, JavaScript and the Node server, the translations, the security headers and the Docker setup, plus fixing the bugs and layout issues I pointed out.
+- **My side:** the content (bio, internships, education, projects, CV and photos), the general ideas behind the design, the feature and security requirements, and the final call on every change. I reviewed and tested the result in the browser as we went.
+- **Claude's side:** turning those ideas into the actual design, building the animations (the intro loader, scroll reveals and the network background), writing and refactoring much of the HTML, CSS, JavaScript and the Node server, the translations, the security headers and the Docker setup, plus fixing the bugs and layout issues I pointed out.
 
 Commits made during these sessions carry a `Co-Authored-By: Claude` line, so the history shows where we worked together.
 
